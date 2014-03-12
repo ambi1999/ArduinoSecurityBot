@@ -31,7 +31,9 @@ public class SendEmail {
     static String portformail = "465";							// Port should be 465 if from within University. Otherwise, use 587
     
 	public static void readFromArduino() throws Exception{
-			
+			try{
+				
+				
 			CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier("COM5");
 			
 			SerialPort port = (SerialPort)portId.open("serial talk", 4000);
@@ -46,6 +48,9 @@ public class SendEmail {
 					System.out.print((char)(input.read()));
 						}
 				}
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
 	 	}
 
 	// public static void sendToArduino (int command) {
